@@ -69,9 +69,9 @@ const UsersDialog = withStyles(styles)((props) => {
     props.onClose();
   };
 
-  const handleUserClick = (user) => {
-    history.push('/users/' + user.login + '/repositories')
-  };
+  // const handleUserClick = (user) => {
+  //   history.push('/users/' + user.login + '/repositories')
+  // };
 
   return (
     <Dialog fullWidth={true} maxWidth={'xs'} onClose={handleClose} aria-labelledby="customized-dialog-title" open={open}>
