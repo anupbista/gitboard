@@ -1,5 +1,4 @@
 import API from './api';
-import { BASE_URL, TOKEN } from '../environments/dev.env';
 
 export default {
 
@@ -19,7 +18,7 @@ export default {
         const options = {
             headers: {
                 'Content-Type': 'application/json',
-                'authorization': TOKEN ? `Bearer ${TOKEN}` : ''
+                'authorization': process.env.TOKEN ? `Bearer ${process.env.TOKEN}` : ''
             }
         };
         const data = {
@@ -28,7 +27,7 @@ export default {
                 username: username
             }
         }
-        return API.post(BASE_URL, data, options);
+        return API.post(process.env.BASE_URL, data, options);
     },
 
     getGitHubUserDetails: async (username) => {
@@ -77,7 +76,7 @@ export default {
         const options = {
             headers: {
                 'Content-Type': 'application/json',
-                'authorization': TOKEN ? `Bearer ${TOKEN}` : ''
+                'authorization': process.env.TOKEN ? `Bearer ${process.env.TOKEN}` : ''
             }
         };
         const data = {
@@ -86,6 +85,6 @@ export default {
                 username: username
             }
         }
-        return API.post(BASE_URL, data, options);
+        return API.post(process.env.BASE_URL, data, options);
     }
 }

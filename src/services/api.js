@@ -1,10 +1,9 @@
 import axios from 'axios'
 import history from './history';
-import { BASE_URL, TIMEOUT } from '../environments/dev.env';
 
 const API = axios.create({
-    baseURL: BASE_URL,
-    timeout: TIMEOUT,
+    baseURL: process.env.BASE_URL,
+    timeout: process.env.TIMEOUT,
     headers: {
         'Content-Type': 'application/json'
     }
@@ -18,7 +17,6 @@ API.interceptors.response.use((response) => {
     } else {
         const status = error.response.status;
         if(status === 401){
-            localStorage.clear();
             history.push('/')
             return Promise.reject(error.response)
         }else{

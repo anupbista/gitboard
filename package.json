@@ -10,6 +10,7 @@
     "@testing-library/user-event": "^7.2.1",
     "axios": "^0.19.2",
     "clsx": "^1.1.1",
+    "dotenv": "^8.2.0",
     "history": "^5.0.0",
     "moment": "^2.26.0",
     "path-to-regexp": "^6.1.0",
