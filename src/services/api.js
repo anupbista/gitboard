@@ -2,8 +2,8 @@ import axios from 'axios'
 import history from './history';
 
 const API = axios.create({
-    baseURL: process.env.BASE_URL,
-    timeout: process.env.TIMEOUT,
+    baseURL: process.env.REACT_APP_BASE_URL,
+    timeout: process.env.REACT_APP_TIMEOUT,
     headers: {
         'Content-Type': 'application/json'
     }

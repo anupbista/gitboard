@@ -18,7 +18,7 @@ export default {
         const options = {
             headers: {
                 'Content-Type': 'application/json',
-                'authorization': process.env.TOKEN ? `Bearer ${process.env.TOKEN}` : ''
+                'authorization': process.env.REACT_APP_TOKEN ? `Bearer ${process.env.REACT_APP_TOKEN}` : ''
             }
         };
         const data = {
@@ -27,7 +27,7 @@ export default {
                 username: username
             }
         }
-        return API.post(process.env.BASE_URL, data, options);
+        return API.post(process.env.REACT_APP_BASE_URL, data, options);
     },
 
     getGitHubUserDetails: async (username) => {
@@ -76,7 +76,7 @@ export default {
         const options = {
             headers: {
                 'Content-Type': 'application/json',
-                'authorization': process.env.TOKEN ? `Bearer ${process.env.TOKEN}` : ''
+                'authorization': process.env.REACT_APP_TOKEN ? `Bearer ${process.env.REACT_APP_TOKEN}` : ''
             }
         };
         const data = {
@@ -85,6 +85,6 @@ export default {
                 username: username
             }
         }
-        return API.post(process.env.BASE_URL, data, options);
+        return API.post(process.env.REACT_APP_BASE_URL, data, options);
     }
 }
