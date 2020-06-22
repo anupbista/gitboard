@@ -13,7 +13,7 @@ API.interceptors.response.use((response) => {
     return response;
 }, (error) => {
     if (!error.response) {
-        return Promise.reject('Network Error')
+        return Promise.reject('Network Error Occured')
     } else {
         const status = error.response.status;
         if(status === 401){

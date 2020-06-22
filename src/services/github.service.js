@@ -18,7 +18,7 @@ export default {
         const options = {
             headers: {
                 'Content-Type': 'application/json',
-                'authorization': process.env.REACT_APP_TOKEN ? `Bearer ${process.env.REACT_APP_TOKEN}` : ''
+                'authorization': process.env.REACT_APP_TOKEN ? `Bearer ${process.env.REACT_APP_TOKEN}` : null
             }
         };
         const data = {
