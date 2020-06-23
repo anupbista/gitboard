@@ -2,7 +2,6 @@ import React from 'react';
 import { makeStyles } from '@material-ui/styles';
 import { Grid, Button, Typography } from '@material-ui/core';
 import { Link } from 'react-router-dom'
-import { withRouter } from 'react-router-dom';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -63,4 +62,4 @@ const NotFound = () => {
   );
 };
 
-export default withRouter(NotFound);
+export default NotFound;

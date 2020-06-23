@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { withStyles, useStyles } from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/core/styles';
 import { withRouter } from 'react-router-dom';
 import Dialog from '@material-ui/core/Dialog';
 import MuiDialogTitle from '@material-ui/core/DialogTitle';
@@ -17,8 +17,6 @@ import PropTypes from 'prop-types';
 import { Box } from '@material-ui/core';
 import DialogActions from '@material-ui/core/DialogActions';
 import Button from '@material-ui/core/Button';
-
-import history from '../../../../services/history';
 
 const styles = (theme) => ({
   root: {

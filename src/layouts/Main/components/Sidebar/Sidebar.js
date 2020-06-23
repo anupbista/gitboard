@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/styles';
-import { Divider, Drawer, Hidden } from '@material-ui/core';
+import { Drawer, Hidden } from '@material-ui/core';
 import FolderSharedIcon from '@material-ui/icons/FolderShared';
 import { Profile, SidebarNav, Footer } from './components';
 import { GlobalContext } from '../../../../contexts/GlobalContext';
@@ -26,9 +26,6 @@ const useStyles = makeStyles(theme => ({
   },
   drawerPaper: {
     width: drawerWidth,
-  },
-  divider: {
-    margin: theme.spacing(2, 0)
   },
   nav: {
     marginBottom: theme.spacing(2)
@@ -68,13 +65,11 @@ const Sidebar = props => {
           >
             <div>
             <Profile user={user} />
-            {/* <Divider className={classes.divider} /> */}
             <SidebarNav
               close={true}
               className={classes.nav}
               pages={pages}
             />
-             {/* <Divider className={classes.divider} /> */}
             </div>
             <Footer />
           </div>
@@ -92,13 +87,11 @@ const Sidebar = props => {
           >
            <div>
            <Profile user={user} />
-            {/* <Divider className={classes.divider} /> */}
             <SidebarNav
               close={false}
               className={classes.nav}
               pages={pages}
             />
-            {/* <Divider className={classes.divider} /> */}
            </div>
             <Footer />
           </div>

@@ -6,7 +6,6 @@ import MenuIcon from '@material-ui/icons/Menu';
 import { GlobalContext } from '../../../../contexts/GlobalContext';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import { Link as RouterLink } from 'react-router-dom';
-import palette from '../../../../theme/palette';
 
 const drawerWidth = 240;
 
@@ -63,7 +62,7 @@ const Topbar = props => {
 
   React.useEffect(() => {
     setPageName(window.location.pathname.split("/").pop())
-  }, [window.location.pathname]);
+  }, []);
 
   return (
     <AppBar

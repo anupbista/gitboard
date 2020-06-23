@@ -99,7 +99,7 @@ const Repository = props => {
             <Button size="small" variant="outlined" color="primary" href={repo.url} target="_blank" startIcon={<OpenInNewIcon />}>
               Open
             </Button>
-            <Button size="small" variant="outlined" color="default" style={{backgroundColor: theme.palette.success.main, color: theme.palette.white, marginLeft: theme.spacing(1)}} onClick={ () => handleCloneClick(repo)} startIcon={<GetAppIcon />}>
+            <Button size="small" variant="contained" color="default" style={{backgroundColor: theme.palette.success.main, color: theme.palette.white, marginLeft: theme.spacing(1)}} onClick={ () => handleCloneClick(repo)} startIcon={<GetAppIcon />}>
               Clone
             </Button>
             </Box>

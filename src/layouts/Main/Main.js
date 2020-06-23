@@ -44,7 +44,6 @@ const Main = props => {
       try {
         toggleLoading(true)
         let res = await GithubService.getGitHubUserDetails(props.children.props.match.params.id);
-        console.log(res)
         setuser(res.data.data.user);
         toggleLoading(false);
         } catch (error) {

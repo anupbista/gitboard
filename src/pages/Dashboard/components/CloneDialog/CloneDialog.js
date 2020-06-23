@@ -1,5 +1,5 @@
 import React, { useEffect, useContext } from 'react';
-import { withStyles, useStyles } from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/core/styles';
 import { withRouter } from 'react-router-dom';
 import Dialog from '@material-ui/core/Dialog';
 import MuiDialogContent from '@material-ui/core/DialogContent';
@@ -41,10 +41,7 @@ const styles = (theme) => ({
 const DialogContent = withStyles((theme) => ({
   root: {
     padding: theme.spacing(2),
-  },
-  close: {
-    padding: theme.spacing(0.5),
-  },
+  }
 }))(MuiDialogContent);
 
 const CloneDialog = withStyles(styles)((props) => {
@@ -52,7 +49,7 @@ const CloneDialog = withStyles(styles)((props) => {
   const [useHTTPS, setUseHTTPS] = React.useState(true);
   const [copy, setCopy] = React.useState(false);
   const { repo } = useContext(GlobalContext)
-  const { classes, data } = props;
+  const { classes } = props;
 
   useEffect(() => {
     setOpen(props.modalOpen);
