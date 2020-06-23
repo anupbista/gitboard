@@ -14,7 +14,7 @@
 
 - Install dependencies: `npm install` or `yarn`
 
-- Add a environment file named .env for local and use server environment varibales for deployment
+- Add a environment file named .env for local and use server environment variables for deployment
 
 - Start the server: `npm start` or `yarn start`
 
