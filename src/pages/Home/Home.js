@@ -34,13 +34,22 @@ const useStyles = makeStyles(theme => ({
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    flexDirection: 'column'
+    flexDirection: 'column',
+    [theme.breakpoints.down('sm')]: {
+      width: '100%',
+    }
   },
   logoImage: {
     width: '60%',
   },
   mainImage: {
-    width: '70%'
+    width: '100%'
+  },
+  paper:{
+    [theme.breakpoints.down('sm')]: {
+      width: '100%',
+      height: '100vh'
+    }
   },
   form: {
     padding: 30,
@@ -110,7 +119,7 @@ const Home = props => {
           <Box justifyContent="center" display="flex" alignItems="center">
             <img className={classes.mainImage}
               alt="Logo"
-              src="assets/undraw_people_search_wctu.svg"
+              src="assets/search-pana.svg"
             />
           </Box>
         </Grid>
@@ -122,7 +131,7 @@ const Home = props => {
         >
 
           <div className={classes.content}>
-            <Paper className={classes.content}>
+            <Paper className={clsx(classes.content, classes.paper)}>
               <form
                 className={classes.form}
                 onSubmit={handleSubmit(onSubmit)}

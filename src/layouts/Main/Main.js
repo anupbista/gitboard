@@ -14,7 +14,6 @@ import CloseIcon from '@material-ui/icons/Close';
 
 import { GlobalContext } from '../../contexts/GlobalContext';
 import GithubService from '../../services/github.service';
-import history from '../../services/history';
 
 const useStyles = makeStyles(theme => ({
   root: {

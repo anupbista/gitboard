@@ -8,7 +8,6 @@ const useStyles = makeStyles(theme => ({
     padding: theme.spacing(4)
   },
   content: {
-    paddingTop: 100,
     textAlign: 'center',
     display: 'flex',
     justifyContent: 'center',
@@ -18,10 +17,13 @@ const useStyles = makeStyles(theme => ({
   image: {
     display: 'inline-block',
     maxWidth: '100%',
-    width: 560
+    width: '40%'
   },
   text: {
-    marginTop: 50
+    marginTop: 30
+  },
+  textsmall: {
+    marginTop: 20
   },
   button:{
     marginTop: 50
@@ -47,10 +49,13 @@ const NotFound = () => {
             <img
               alt="Under development"
               className={classes.image}
-              src="/images/not_found.svg"
+              src="/assets/not_found.svg"
             />
              <Typography variant="h1" className={classes.text}>
-              404: The page you are looking for isn’t here
+              Oops!
+            </Typography>
+            <Typography variant="h4" className={classes.textsmall}>
+              We can't seem to find the page you're looking for.
             </Typography>
             <Button className={classes.button} component={Link} to="/" variant="contained" color="primary">
               Go to Gitboard search

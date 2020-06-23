@@ -29,7 +29,7 @@ const styles = (theme) => ({
     top: theme.spacing(1),
     color: theme.palette.grey[500],
   },
-  image:{
+  image: {
     maxWidth: '65%'
   }
 });
@@ -56,7 +56,7 @@ const DialogContent = withStyles((theme) => ({
 
 const UsersDialog = withStyles(styles)((props) => {
   const [open, setOpen] = React.useState(props.modalOpen);
-  const {classes, data } = props;
+  const { classes, data } = props;
 
   useEffect(() => {
     setOpen(props.modalOpen);
@@ -75,48 +75,53 @@ const UsersDialog = withStyles(styles)((props) => {
     <Dialog fullWidth={true} maxWidth={'xs'} onClose={handleClose} aria-labelledby="customized-dialog-title" open={open}>
       <DialogTitle id="customized-dialog-title" onClose={handleClose}>
         {
-           !data.error ? 'Users' : 'User Not Found'
+          !data.error ? 'Users' : 'User Not Found'
         }
-        </DialogTitle>
+      </DialogTitle>
       <DialogContent dividers>
-        { !data.error ? ( 
-        <List>
-          {
-            data.users.map(user => {
-              return (
-                <Link to={'/users/' + user.login + '/repositories'} key={user.id}>
-                  {/* <ListItem onClick={() => handleUserClick(user)} key={user.id}> */}
-                  <ListItem>
-                    <ListItemAvatar>
-                      <Avatar alt={user.name} src={user.avatarUrl} />
-                    </ListItemAvatar>
-                    <ListItemText primary={user.name} secondary={user.login} />
-                  </ListItem>
-                </Link>
-              )
-            })
-          }
-        </List>
+        {!data.error ? (
+          <React.Fragment>
+            <Typography variant="caption">
+            Click on the user to view repositories
+        </Typography>
+          <List>
+            {
+              data.users.map(user => {
+                return (
+                  <Link to={'/users/' + user.login + '/repositories'} key={user.id}>
+                    {/* <ListItem onClick={() => handleUserClick(user)} key={user.id}> */}
+                    <ListItem>
+                      <ListItemAvatar>
+                        <Avatar alt={user.name} src={user.avatarUrl} />
+                      </ListItemAvatar>
+                      <ListItemText primary={user.name} secondary={user.login} />
+                    </ListItem>
+                  </Link>
+                )
+              })
+            }
+          </List>
+          </React.Fragment>
         ) : (
-          <Box justifyContent="center" flexDirection="column" display="flex" alignItems="center">
-            <img
-            className={classes.image}
-              alt="User not found"
-              src="assets/user_not_found.svg"
-            />
-             <Typography variant="subtitle2">
-               Check if the username is correct!!!
+            <Box justifyContent="center" flexDirection="column" display="flex" alignItems="center">
+              <img
+                className={classes.image}
+                alt="User not found"
+                src="assets/user_not_found.svg"
+              />
+              <Typography variant="subtitle2">
+                Check if the username is correct!!!
              </Typography>
-          </Box>
-        )}
+            </Box>
+          )}
       </DialogContent>
-      { data.error && (
-      <DialogActions>
+      {data.error && (
+        <DialogActions>
           <Button onClick={handleClose} color="primary">
             OK
           </Button>
         </DialogActions>
-        )}
+      )}
     </Dialog>
   );
 })
