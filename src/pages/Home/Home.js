@@ -79,15 +79,18 @@ const Home = props => {
   const { toggleLoading, setMsg } = useContext(GlobalContext)
   const { register, handleSubmit, errors } = useForm();
   const [modalOpen, setModalOpen] = useState(false);
-  const [data, setData] = useState({ users: [], erorr: false });
+  const [data, setData] = useState({ users: [], error: false, hasNextPage: false, userCount: 0, searchText: null });
 
   const onSubmit = async (data) => {
     try {
       toggleLoading(true)
-      let res = await GithubService.getGitHubUser(data.username);
+      let res = await GithubService.getGitHubUserByName(data.username);
       setData({
-        users: [ {...res.data.data.user }],
-        error: res.data.data.user ? false : true
+        users: [...res.data.data.search.edges],
+        hasNextPage: res.data.data.search.pageInfo.hasNextPage,
+        error: res.data.data.search.edges ? false : true,
+        userCount: res.data.data.search.userCount,
+        searchText: data.username
       })
       setModalOpen(true)
       toggleLoading(false);
@@ -99,7 +102,7 @@ const Home = props => {
 
   const handleDialogClose = () => {
     setModalOpen(false);
-    setData({ users: [], erorr: false });
+    // setData({ users: [], error: false, hasNextPage:false, userCount: 0, searchText: null });
   }
  
 
@@ -146,7 +149,7 @@ const Home = props => {
                   className={classes.title}
                   variant="body2"
                 >
-                  Search by the username of github user
+                  Search by the name or username of github user
                 </Typography>
                 <Box justifyContent="center" alignItems="center" display="flex" position="relative">
                   <TextField
@@ -157,7 +160,7 @@ const Home = props => {
                     type="text"
                     error={errors.username ? true : false}
                     helperText={
-                      errors.username ? 'Username is required' : null
+                      errors.username ? 'Name/Username is required' : null
                     }
                     inputRef={register({ required: true })}
                     variant="outlined"
