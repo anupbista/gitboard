@@ -22,7 +22,7 @@ const useStyles = makeStyles(theme => ({
   root: {
     backgroundColor: theme.palette.primary.main,
     display: 'flex',
-    alignItems: 'center',
+    alignItems: 'center'
   },
   container: {
     backgroundImage: `url(${"assets/background.svg"})`,
@@ -122,7 +122,7 @@ const Home = props => {
         >
 
           <div className={classes.content}>
-            <Paper>
+            <Paper className={classes.content}>
               <form
                 className={classes.form}
                 onSubmit={handleSubmit(onSubmit)}

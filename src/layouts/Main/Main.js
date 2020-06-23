@@ -1,5 +1,6 @@
 import React, { useContext, useEffect } from 'react';
 import PropTypes from 'prop-types';
+import { useHistory } from "react-router-dom";
 import clsx from 'clsx';
 import { makeStyles, useTheme } from '@material-ui/styles';
 import { useMediaQuery } from '@material-ui/core';
@@ -13,6 +14,7 @@ import CloseIcon from '@material-ui/icons/Close';
 
 import { GlobalContext } from '../../contexts/GlobalContext';
 import GithubService from '../../services/github.service';
+import history from '../../services/history';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -38,19 +40,25 @@ const useStyles = makeStyles(theme => ({
 const Main = props => {
   const classes = useStyles();
   const { children } = props;
+  let history = useHistory();
   const theme = useTheme();
   const isDesktop = useMediaQuery(theme.breakpoints.up('sm'), {
     defaultMatches: true
   });
-  const { loading, setuser, toggleLoading, msg, setMsg } = useContext(GlobalContext);
+  const { loading, user, setuser, toggleLoading, msg, setMsg } = useContext(GlobalContext);
   useEffect(() => {
     const fetchData = async () => {
       try {
         toggleLoading(true)
         let res = await GithubService.getGitHubUserDetails(props.children.props.match.params.id);
+        if(!res.data.data.user){
+          history.push('/');
+          setMsg("User not foud")
+        }
         setuser(res.data.data.user);
         toggleLoading(false);
       } catch (error) {
+        history.push('/');
         setMsg(error.message)
         toggleLoading(false)
       }
@@ -90,7 +98,7 @@ const Main = props => {
         <CircularProgress color="inherit" />
       </Backdrop>
       <Topbar />
-      <Sidebar />
+      {user && <Sidebar />}
       <main className={classes.content}>
         {children}
       </main>

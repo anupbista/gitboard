@@ -44,7 +44,7 @@ const Dashboard = () => {
         spacing={4}
       >
         {
-          user.repositories && user.repositories.nodes.map(repo => {
+          user?.repositories && user?.repositories.nodes.map(repo => {
             return (
               <Grid item xs={12} sm={6} key={repo.id}>
                 <Repository repo={repo} onClose={handleDialogOpen} />
