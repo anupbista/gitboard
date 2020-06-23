@@ -134,9 +134,9 @@ const Home = props => {
                 </Box>
                 <Typography
                   className={classes.title}
-                  variant="h6"
+                  variant="body2"
                 >
-                  Start by typing the username of github user
+                  Search by the username of github user
                 </Typography>
                 <Box justifyContent="center" alignItems="center" display="flex" position="relative">
                   <TextField
