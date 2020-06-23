@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Switch, Redirect } from 'react-router-dom';
+import { Switch, Redirect } from 'react-router-dom';
 
 import { Minimal as MinimalLayout, Main as MainLayout } from './layouts';
 import { RouteWithLayout } from './components';
@@ -12,29 +12,27 @@ import {
 
 const Routes = () => {
   return (
-    <BrowserRouter>
-      <Switch>
-        <RouteWithLayout
-          component={HomeView}
-          exact
-          layout={MinimalLayout}
-          path="/"
-        />
-        <RouteWithLayout
-          component={DashboardView}
-          exact
-          layout={MainLayout}
-          path="/users/:id/repositories"
-        />
-        <RouteWithLayout
-          component={NotFoundView}
-          exact
-          layout={MinimalLayout}
-          path="/opps"
-        />
-        <Redirect to="/opps" />
-      </Switch>
-    </BrowserRouter>
+    <Switch>
+    <RouteWithLayout
+        component={HomeView}
+        exact
+        layout={MinimalLayout}
+        path="/"
+      />
+      <RouteWithLayout
+        component={DashboardView}
+        exact
+        layout={MainLayout}
+        path="/users/:id/repositories"
+      />
+      <RouteWithLayout
+        component={NotFoundView}
+        exact
+        layout={MinimalLayout}
+        path="/opps"
+      />
+      <Redirect to="/opps" />
+    </Switch>
   );
 };
 

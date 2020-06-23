@@ -67,7 +67,7 @@ const useStyles = makeStyles(theme => ({
 const Home = props => {
 
   const classes = useStyles();
-  const { toggleLoading } = useContext(GlobalContext)
+  const { toggleLoading, setMsg } = useContext(GlobalContext)
   const { register, handleSubmit, errors } = useForm();
   const [modalOpen, setModalOpen] = useState(false);
   const [data, setData] = useState({ users: [], erorr: false });
@@ -83,7 +83,8 @@ const Home = props => {
       setModalOpen(true)
       toggleLoading(false);
       } catch (error) {
-      toggleLoading(false)
+        toggleLoading(false)
+        setMsg(error.message)
     }
   };
 

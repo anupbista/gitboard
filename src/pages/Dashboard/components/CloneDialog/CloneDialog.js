@@ -80,7 +80,6 @@ const CloneDialog = withStyles(styles)((props) => {
             <IconButton
               aria-label="close"
               color="inherit"
-              className={classes.close}
               onClick={handleSnackBarClose}
             >
               <CloseIcon />

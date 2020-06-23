@@ -7,6 +7,10 @@ import { useMediaQuery } from '@material-ui/core';
 import { Sidebar, Topbar } from './components';
 import Backdrop from '@material-ui/core/Backdrop';
 import CircularProgress from '@material-ui/core/CircularProgress';
+import IconButton from '@material-ui/core/IconButton';
+import Snackbar from '@material-ui/core/Snackbar';
+import CloseIcon from '@material-ui/icons/Close';
+
 import { GlobalContext } from '../../contexts/GlobalContext';
 import GithubService from '../../services/github.service';
 
@@ -38,7 +42,7 @@ const Main = props => {
   const isDesktop = useMediaQuery(theme.breakpoints.up('sm'), {
     defaultMatches: true
   });
-  const { loading, setuser, toggleLoading } = useContext(GlobalContext);
+  const { loading, setuser, toggleLoading, msg, setMsg } = useContext(GlobalContext);
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -46,12 +50,17 @@ const Main = props => {
         let res = await GithubService.getGitHubUserDetails(props.children.props.match.params.id);
         setuser(res.data.data.user);
         toggleLoading(false);
-        } catch (error) {
+      } catch (error) {
+        setMsg(error.message)
         toggleLoading(false)
       }
     }
     fetchData();
   }, [props.children.props.match.params.id])
+
+  const handleSnackBarClose = () => {
+    setMsg(null);
+  };
 
   return (
     <div
@@ -60,11 +69,28 @@ const Main = props => {
         [classes.shiftContent]: isDesktop
       })}
     >
+      <Snackbar
+        open={msg ? true : false}
+        autoHideDuration={3000}
+        onClose={handleSnackBarClose}
+        message={msg}
+        action={
+          <React.Fragment>
+            <IconButton
+              aria-label="close"
+              color="inherit"
+              onClick={handleSnackBarClose}
+            >
+              <CloseIcon />
+            </IconButton>
+          </React.Fragment>
+        }
+      />
       <Backdrop open={loading} className={classes.backdrop}>
         <CircularProgress color="inherit" />
       </Backdrop>
       <Topbar />
-      <Sidebar/>
+      <Sidebar />
       <main className={classes.content}>
         {children}
       </main>
