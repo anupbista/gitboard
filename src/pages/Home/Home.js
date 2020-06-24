@@ -155,7 +155,7 @@ const Home = props => {
                   <TextField
                     className={classes.textField}
                     fullWidth
-                    label="Username"
+                    label="Name/Username"
                     name="username"
                     type="text"
                     error={errors.username ? true : false}
